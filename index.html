@@ -1,122 +1,47 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>منصة التبرع بالدم</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    * { margin:0; padding:0; box-sizing:border-box; font-family:'Cairo', sans-serif; }
-    body { background:#fff5f5; color:#333; line-height:1.6; }
+<section class="contact">
+  <h3>تواصل معنا</h3>
+  <form>
+    <input type="text" placeholder="الاسم" required>
+    <input type="email" placeholder="البريد الإلكتروني" required>
+    <textarea rows="5" placeholder="رسالتك" required></textarea>
+    <button type="submit">إرسال</button>
+  </form>
 
-    header {
-      background: linear-gradient(135deg, #ff4d4d, #ff9999);
-      color:#fff; padding:50px 20px; text-align:center;
-    }
-    header h1 { font-size:3rem; margin-bottom:10px; }
-    header p { font-size:1.2rem; color:#ffe5e5; }
-
-    nav {
-      background:#fff; box-shadow:0 2px 6px rgba(0,0,0,0.1);
-      display:flex; justify-content:center; gap:25px; padding:15px 0; position:sticky; top:0; z-index:100;
-    }
-    nav a { text-decoration:none; color:#ff4d4d; font-weight:600; transition:0.3s; }
-    nav a:hover { color:#b30000; }
-
-    .hero {
-      display:flex; flex-direction:column; align-items:center; text-align:center; padding:60px 20px;
-    }
-    .hero img { width:250px; border-radius:15px; margin-bottom:20px; border:5px solid #ff4d4d; }
-    .hero h2 { font-size:2.2rem; margin-bottom:15px; color:#cc0000; }
-    .hero p { max-width:600px; font-size:1rem; color:#666; }
-
-    .donors-section { padding:50px 20px; text-align:center; }
-    .donors-section h3 { font-size:2rem; margin-bottom:30px; color:#b30000; }
-
-    .donors-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap:25px;
-      justify-items:center;
-    }
-
-    .donor-card {
-      background:#fff0f0; border-radius:20px; overflow:hidden;
-      box-shadow:0 6px 15px rgba(0,0,0,0.1); padding:25px; text-align:center;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .donor-card:hover {
-      transform: translateY(-10px);
-      box-shadow:0 12px 20px rgba(0,0,0,0.2);
-    }
-
-    .donor-card img {
-      width:120px; height:120px; border-radius:50%; object-fit:cover; margin-bottom:15px;
-      border:3px solid #ff4d4d;
-    }
-    .donor-card h4 { font-size:1.2rem; color:#cc0000; margin-bottom:5px; }
-    .donor-card p { color:#555; font-size:0.9rem; }
-
-    footer { background:#ff4d4d; color:#fff; text-align:center; padding:30px 20px; margin-top:40px; }
-    footer p { margin-bottom:5px; }
-
-    @media(max-width:600px){
-      header h1 { font-size:2rem; }
-      .hero h2 { font-size:1.5rem; }
-    }
-  </style>
-</head>
-<body>
-
-<header>
-  <h1>منصة التبرع بالدم</h1>
-  <p>ساهم في إنقاذ حياة الآخرين بسهولة وأمان</p>
-</header>
-
-<nav>
-  <a href="#">الرئيسية</a>
-  <a href="#">عن التبرع</a>
-  <a href="#">المتبرعون</a>
-  <a href="#">اتصل بنا</a>
-</nav>
-
-<section class="hero">
-  <img src="https://images.unsplash.com/photo-1588776814546-4e5b4a5eb103?fit=crop&w=500&q=80" alt="تبرع بالدم">
-  <h2>انضم لمجتمع المتبرعين</h2>
-  <p>تبرع بالدم وكن سببًا في إنقاذ حياة شخص يحتاج للمساعدة. كل تبرع يحدث فرقًا حقيقيًا.</p>
-</section>
-
-<section class="donors-section">
-  <h3>أبرز المتبرعين</h3>
-  <div class="donors-grid">
-    <div class="donor-card">
-      <img src="https://images.unsplash.com/photo-1588776814546-4e5b4a5eb103?fit=crop&w=200&q=80" alt="متبرع">
-      <h4>أحمد علي</h4>
-      <p>تبرع 5 مرات</p>
-    </div>
-    <div class="donor-card">
-      <img src="https://images.unsplash.com/photo-1590080870480-507244f9971f?fit=crop&w=200&q=80" alt="متبرع">
-      <h4>سارة محمد</h4>
-      <p>تبرعت 3 مرات</p>
-    </div>
-    <div class="donor-card">
-      <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?fit=crop&w=200&q=80" alt="متبرع">
-      <h4>يوسف كريم</h4>
-      <p>تبرع 4 مرات</p>
-    </div>
-    <div class="donor-card">
-      <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?fit=crop&w=200&q=80" alt="متبرع">
-      <h4>ليلى حسن</h4>
-      <p>تبرعت 2 مرات</p>
-    </div>
+  <div style="margin-top:30px; text-align:center;">
+    <button onclick="getLocation()">إظهار موقعي</button>
+    <p id="location"></p>
   </div>
 </section>
 
-<footer>
-  <p>© 2025 منصة التبرع بالدم</p>
-  <p>جميع الحقوق محفوظة</p>
-</footer>
+<script>
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition, showError);
+  } else {
+    document.getElementById("location").innerHTML = "الموقع غير مدعوم في هذا المتصفح";
+  }
+}
 
-</body>
-</html>
+function showPosition(position) {
+  document.getElementById("location").innerHTML = 
+    "خط العرض: " + position.coords.latitude + 
+    "<br>خط الطول: " + position.coords.longitude;
+}
+
+function showError(error) {
+  switch(error.code) {
+    case error.PERMISSION_DENIED:
+      alert("رفض المستخدم الوصول إلى الموقع");
+      break;
+    case error.POSITION_UNAVAILABLE:
+      alert("الموقع غير متوفر");
+      break;
+    case error.TIMEOUT:
+      alert("انتهت مهلة الطلب");
+      break;
+    case error.UNKNOWN_ERROR:
+      alert("حدث خطأ غير معروف");
+      break;
+  }
+}
+</script>
