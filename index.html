@@ -106,30 +106,33 @@
         }
 
         /* Hero Section with Full Background Image */
-        .hero {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 4rem 5%;
-            background-image: url('https://cdn.altibbi.com/cdn/cache/1000x500/image/2025/02/11/e4a367a1da5004350df9511d42d8f09b.jpg.webp');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-        }
+       .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4rem 5%;
+    background-image: url('https://images.unsplash.com/photo-1600959907703-9b9e7fdb9b2e?auto=format&fit=crop&w=1600&q=90');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(255, 255, 255, 0.85);
-        }
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* خفّفنا الشفافية حتى الصورة تبين أوضح */
+    background: rgba(255, 255, 255, 0.35);
+    backdrop-filter: brightness(1.1);
+}
+
 
         .hero-content {
             position: relative;
