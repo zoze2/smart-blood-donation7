@@ -1,0 +1,546 @@
+# smart-blood-donation7
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة التبرع الذكي بالدم</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #000000;
+            min-height: 100vh;
+            color: #000000;
+        }
+
+        /* Header */
+        header {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 1rem 5%;
+            box-shadow: 0 2px 10px rgba(255, 0, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 3px solid #dc143c;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #dc143c;
+        }
+
+        .logo span {
+            font-size: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #dc143c;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.6rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #dc143c;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #b01030;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(220, 20, 60, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #dc143c;
+            border: 2px solid #dc143c;
+        }
+
+        .btn-secondary:hover {
+            background: #dc143c;
+            color: white;
+        }
+
+        /* Hero Section with Full Background Image */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 4rem 5%;
+            background-image: url('https://static.webteb.net/images/uploads/slideshows/1304-3slidesshow-inside-ima.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.85);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: #000000;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(220, 20, 60, 0.3);
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            color: #000000;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+            font-weight: 500;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-buttons .btn {
+            padding: 1.2rem 3rem;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Stats Section */
+        .stats {
+            background: linear-gradient(135deg, #dc143c 0%, #8b0000 100%);
+            padding: 3rem 5%;
+            color: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+
+        /* Features Section */
+        .features {
+            background: #000000;
+            padding: 4rem 5%;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #dc143c;
+            margin-bottom: 3rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #dc143c 0%, #8b0000 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            color: white;
+            transition: transform 0.3s;
+            box-shadow: 0 5px 15px rgba(220, 20, 60, 0.3);
+            border: 2px solid #dc143c;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(220, 20, 60, 0.5);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 4rem 5%;
+            background: #1a1a1a;
+        }
+
+        .how-it-works h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #dc143c;
+            margin-bottom: 3rem;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .step {
+            background: #2a2a2a;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(220, 20, 60, 0.2);
+            border: 2px solid #dc143c;
+            position: relative;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: #dc143c;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+            border: 3px solid #000000;
+        }
+
+        .step h3 {
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        .step p {
+            color: #cccccc;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background: #000000;
+            color: white;
+            padding: 2rem 5%;
+            text-align: center;
+            border-top: 3px solid #dc143c;
+        }
+
+        footer p {
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #dc143c;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero {
+                background-attachment: scroll;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <span>🩸</span>
+                <span>منصة التبرع الذكي</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#features">المميزات</a></li>
+                <li><a href="#how-it-works">كيف يعمل</a></li>
+                <li><a href="#contact">تواصل</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn btn-secondary">تسجيل دخول</a>
+                <a href="register.html" class="btn btn-primary">تسجيل جديد</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section with Full Background -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>احفظ حياة.. تبرع بالدم</h1>
+            <p>منصة ذكية تربط المتبرعين بالدم مع المستشفيات والبنوك الدم باستخدام تقنية GPS لإنقاذ الأرواح في الوقت المناسب. كل قطرة دم تساهم في إنقاذ حياة إنسان.</p>
+            <div class="hero-buttons">
+                <a href="register.html?type=donor" class="btn btn-primary">سجل كمتبرع</a>
+                <a href="register.html?type=hospital" class="btn btn-secondary">سجل كمستشفى</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h3>1000+</h3>
+                <p>متبرع مسجل</p>
+            </div>
+            <div class="stat-item">
+                <h3>50+</h3>
+                <p>مستشفى شريك</p>
+            </div>
+            <div class="stat-item">
+                <h3>500+</h3>
+                <p>حياة تم إنقاذها</p>
+            </div>
+            <div class="stat-item">
+                <h3>24/7</h3>
+                <p>خدمة متواصلة</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <h2>مميزات المنصة</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">📍</div>
+                <h3>تتبع GPS ذكي</h3>
+                <p>نظام تحديد موقع دقيق يربطك بأقرب متبرع في ثوانٍ</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔔</div>
+                <h3>إشعارات فورية</h3>
+                <p>تنبيهات مباشرة للمتبرعين عند الحاجة للدم</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🏥</div>
+                <h3>ربط مع المستشفيات</h3>
+                <p>تواصل سريع ومباشر مع المستشفيات وبنوك الدم</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>لوحة تحكم شاملة</h3>
+                <p>متابعة سجل التبرعات والإحصائيات بسهولة</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>أمان وخصوصية</h3>
+                <p>حماية كاملة للبيانات الشخصية والطبية</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>استجابة سريعة</h3>
+                <p>نظام ذكي للاستجابة في الحالات الطارئة</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <h2>كيف يعمل النظام</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>التسجيل</h3>
+                <p>سجل حسابك كمتبرع أو مستشفى وأدخل المعلومات الأساسية</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>تفعيل الموقع</h3>
+                <p>فعّل خدمة تحديد الموقع GPS لإيجاد أقرب متبرع</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>طلب الدم</h3>
+                <p>المستشفى يرسل طلب دم مع تحديد الفصيلة والكمية المطلوبة</p>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <h3>الإشعار</h3>
+                <p>المتبرعون المناسبون يستلمون إشعار فوري</p>
+            </div>
+            <div class="step">
+                <div class="step-number">5</div>
+                <h3>التبرع</h3>
+                <p>المتبرع يتواصل مع المستشفى ويتم التبرع</p>
+            </div>
+            <div class="step">
+                <div class="step-number">6</div>
+                <h3>إنقاذ حياة</h3>
+                <p>تسجيل التبرع وإنقاذ حياة إنسان محتاج</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <p>&copy; 2025 منصة التبرع الذكي بالدم. جميع الحقوق محفوظة.</p>
+        <p>تواصل معنا: info@blooddonation.com</p>
+        <div class="social-links">
+            <a href="#" title="Facebook">📘</a>
+            <a href="#" title="Twitter">🐦</a>
+            <a href="#" title="Instagram">📷</a>
+            <a href="#" title="LinkedIn">💼</a>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all feature cards and steps
+        document.querySelectorAll('.feature-card, .step').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+
+        // Parallax effect for hero background
+        window.addEventListener('scroll', () => {
+            const hero = document.querySelector('.hero');
+            const scrolled = window.pageYOffset;
+            hero.style.backgroundPositionY = scrolled * 0.5 + 'px';
+        });
+    </script>
+</body>
+</html>
